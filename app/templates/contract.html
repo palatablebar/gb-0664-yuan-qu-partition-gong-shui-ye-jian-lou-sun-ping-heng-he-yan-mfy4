@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block panels %}
+<section class="panel primary-panel"><div class="panel__head"><h2>单位归一</h2><span>m³</span></div><div class="panel__body flush">{{ gridtable(data.rows, [('record_id','计量记录'),('value','原值'),('unit','原单位'),('value_m3','归一值 / m³'),('error_pct','误差 / %')]) }}</div></section>
+<section class="panel comparison-panel"><div class="panel__head"><h2>核对依据</h2><span>CONTRACT</span></div><div class="panel__body"><dl><dt>体积单位</dt><dd>m³</dd><dt>时区</dt><dd>UTC</dd><dt>边界</dt><dd>[start, end)</dd><dt>记录键</dt><dd>record_id</dd></dl></div></section>
+{% endblock %}

@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block panels %}
+<section class="panel primary-panel"><div class="panel__head"><h2>分区平衡</h2><span>m³</span></div><div class="panel__body flush">{{ gridtable(data.results, [('zone','分区'),('inflow','流入 / m³'),('outflow','转供 / m³'),('sale','售水 / m³'),('authorized','授权 / m³'),('residual','残差 / m³'),('status','结论')]) }}</div></section>
+<section class="panel comparison-panel"><div class="panel__head"><h2>核对依据</h2><span>CALCULATE</span></div><div class="panel__body"><h3>夜间 00:00—05:00</h3>{% for item in data.night_results %}<div class="diff-row"><b>{{ item.zone }}</b><span>{{ item.residual }} m³</span></div>{% endfor %}</div></section>
+{% endblock %}

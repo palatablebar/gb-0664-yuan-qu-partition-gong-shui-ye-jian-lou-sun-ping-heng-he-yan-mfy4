@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block panels %}
+<section class="panel primary-panel"><div class="panel__head"><h2>运行归档</h2><span>m³</span></div><div class="panel__body flush">{{ gridtable(data.get('history',[]), [('id','运行号'),('revision','版本'),('decision','复核')]) }}</div></section>
+<section class="panel comparison-panel"><div class="panel__head"><h2>核对依据</h2><span>BATCHES</span></div><div class="panel__body"><dl><dt>SHA256</dt><dd class="hash">{{ data.manifest.sha256 }}</dd><dt>计算 / ms</dt><dd>{{ data.manifest.elapsed_ms }}</dd><dt>规则版本</dt><dd>{{ data.manifest.rule_version }}</dd></dl></div></section>
+{% endblock %}

@@ -1,0 +1,47 @@
+{
+  "IN-A": [
+    "EXT",
+    "A",
+    "supply"
+  ],
+  "AB": [
+    "A",
+    "B",
+    "transfer"
+  ],
+  "AC": [
+    "A",
+    "C",
+    "transfer"
+  ],
+  "SA": [
+    "A",
+    "OUT",
+    "sale"
+  ],
+  "SB": [
+    "B",
+    "OUT",
+    "sale"
+  ],
+  "SC": [
+    "C",
+    "OUT",
+    "sale"
+  ],
+  "UA": [
+    "A",
+    "OUT",
+    "authorized"
+  ],
+  "UB": [
+    "B",
+    "OUT",
+    "authorized"
+  ],
+  "UC": [
+    "C",
+    "OUT",
+    "authorized"
+  ]
+}

@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block panels %}
+<section class="panel primary-panel"><div class="panel__head"><h2>采信记录</h2><span>m³</span></div><div class="panel__body flush">{{ gridtable(data.rows, [('line','来源行'),('record_id','计量记录'),('at','时间 / UTC'),('meter','表号'),('value','原值'),('unit','原单位')]) }}</div></section>
+<section class="panel comparison-panel"><div class="panel__head"><h2>核对依据</h2><span>INTAKE</span></div><div class="panel__body"><h3>隔离原因</h3>{% for code,count in data.reason_counts.items() %}<div class="diff-row"><span>{{ code }}</span><b class="num">{{ count }}</b></div>{% endfor %}</div></section>
+{% endblock %}

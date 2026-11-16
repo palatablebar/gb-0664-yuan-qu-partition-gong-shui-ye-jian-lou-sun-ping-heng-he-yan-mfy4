@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block panels %}
+<section class="panel primary-panel"><div class="panel__head"><h2>计量边界</h2><span>m³</span></div><div class="panel__body flush">{{ gridtable(data.rows, [('meter','表号'),('from_zone','流出区'),('to_zone','流入区'),('kind','计量类型'),('value_m3','水量 / m³')]) }}</div></section>
+<section class="panel comparison-panel"><div class="panel__head"><h2>核对依据</h2><span>MODEL</span></div><div class="panel__body">{% for meter,link in data.catalog.items() %}<div class="diff-row"><b>{{ meter }}</b><span>{{ link[0] }} → {{ link[1] }}</span></div>{% endfor %}</div></section>
+{% endblock %}
