@@ -1,1 +1,1 @@
-REASONS={"COLUMN_COUNT":"列数不符","REPEATED_HEADER":"重复表头","VALUE":"数值无效","MISSING":"必要值缺失","UNIT":"单位未知","DUPLICATE":"重复记录","CONFLICT":"重复键异值","NEGATIVE":"负向计量","REFERENCE":"计量关系不存在","TIME":"时间无效","UNCERTAINTY":"误差超限"}
+REASONS={"COLUMN_COUNT":"列数不符","REPEATED_HEADER":"重复表头","VALUE":"数值无效","MISSING":"必要值缺失","UNIT":"单位未知","DUPLICATE":"重复记录","CONFLICT":"重复键异值","NEGATIVE":"负向计量","REFERENCE":"计量关系不存在","DIRECTION":"方向异常","REVERSE_MAKEUP":"反向补流","TIME":"时间无效","UNCERTAINTY":"误差超限"}

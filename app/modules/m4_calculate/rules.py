@@ -1,8 +1,5 @@
 from decimal import Decimal
-from datetime import datetime,timedelta,timezone
-def night(at):
-    local=datetime.fromisoformat(at).astimezone(timezone(timedelta(hours=8)))
-    return 0<=local.hour<5
+from app.modules.m3_model.rules import night
 def balances(rows,zones,night_only=False):
     results=[]
     for zone in zones:

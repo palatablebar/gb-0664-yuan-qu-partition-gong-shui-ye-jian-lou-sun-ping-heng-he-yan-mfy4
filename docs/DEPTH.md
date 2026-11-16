@@ -9,7 +9,7 @@
 |---|---|---|---|---|
 | M1 计量采信 | 读取台账并核对原始列与行号 | `GET /api/intake` | `app/modules/m1_intake/service.py` `app/modules/m1_intake/rules.py` | `tests/test_intake.py` |
 | M2 单位契约 | 将升与立方米统一并裁决重复键 | `GET /api/contract` | `app/modules/m2_contract/service.py` `app/modules/m2_contract/rules.py` | `tests/test_contract.py` |
-| M3 拓扑归属 | 核查计量目录、方向与环 | `GET /api/model` | `app/modules/m3_model/service.py` `app/modules/m3_model/rules.py` | `tests/test_model.py` |
+| M3 拓扑归属 | 核查计量目录、方向、环与反向补流 | `GET /api/model` | `app/modules/m3_model/service.py` `app/modules/m3_model/rules.py` | `tests/test_model.py` `tests/test_reverse.py` |
 | M4 水量平衡 | 计算各分区与夜间净水量 | `GET /api/calculate` | `app/modules/m4_calculate/service.py` `app/modules/m4_calculate/rules.py` | `tests/test_calculate.py` |
 | M5 质量隔离 | 按原因码定位异常证据 | `GET /api/quarantine` | `app/modules/m5_quarantine/service.py` `app/modules/m5_quarantine/rules.py` | `tests/test_quarantine.py` |
 | M6 阈值复核 | 复算误差上下界与水量守恒 | `GET /api/reconcile` | `app/modules/m6_reconcile/service.py` `app/modules/m6_reconcile/rules.py` | `tests/test_reconcile.py` |
@@ -27,7 +27,8 @@
 | TRAP-14 | 重复键异值 | 静默误算或覆盖证据 | 相同取首条，冲突全部隔离 | `app/modules/m2_contract/rules.py` | `tests/test_contract.py::test_conflict` |
 | TRAP-15 | 升与立方米混用 | 静默误算或覆盖证据 | 显式单位乘数 | `app/modules/m2_contract/rules.py` | `tests/test_contract.py::test_units` |
 | TRAP-20 | 拓扑循环 | 静默误算或覆盖证据 | DFS返回环路径 | `app/modules/m3_model/rules.py` | `tests/test_model.py::test_cycle` |
-| TRAP-21 | 流向关系不一致 | 静默误算或覆盖证据 | 目录和台账双向字段比对 | `app/modules/m3_model/rules.py` | `tests/test_model.py::test_bad_direction` |
+| TRAP-21 | 流向关系不一致 | 静默误算或覆盖证据 | 目录和台账双向字段比对，反向行细分DIRECTION | `app/modules/m3_model/rules.py` | `tests/test_model.py::test_bad_direction` |
+| TRAP-27 | 反向补流与方向异常混淆 | 照目录则分区失真，全信现场则掩盖漏损 | 转供边+夜间窗口+抢修工单齐备才按现场方向入账，否则DIRECTION隔离 | `app/modules/m3_model/rules.py` | `tests/test_reverse.py::test_reverse_without_order_is_anomaly` |
 | TRAP-23 | 夜间边界 | 静默误算或覆盖证据 | 当地00:00含、05:00不含 | `app/modules/m4_calculate/rules.py` | `tests/test_calculate.py::test_night_boundary` |
 | TRAP-26 | 陈旧复核 | 静默误算或覆盖证据 | 条件更新修订号 | `app/modules/m7_batches/rules.py` | `tests/test_batches.py::test_stale` |
 

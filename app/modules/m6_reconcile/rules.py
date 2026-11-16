@@ -12,5 +12,6 @@ def reconcile(data,threshold="5"):
     auth=sum((Decimal(x["value_m3"]) for x in rows if x["kind"]=="authorized"),Decimal(0))
     residual=sum((Decimal(x["residual"]) for x in data["results"]),Decimal(0))
     for item in data["results"]:item["status"]=classify(item,threshold)
+    for item in data.get("night_results",[]):item["status"]=classify(item,threshold)
     count_ok=data["input_count"]==len(rows)+len(data["quarantine"])+data["blank_count"]
     return {"supply":str(supply),"sales":str(sales),"authorized":str(auth),"residual":str(residual),"balanced":supply==sales+auth+residual,"count_ok":count_ok,"accepted":len(rows),"quarantined":len(data["quarantine"])}

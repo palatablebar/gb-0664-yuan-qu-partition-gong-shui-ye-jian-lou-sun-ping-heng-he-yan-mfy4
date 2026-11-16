@@ -4,7 +4,7 @@ from app.modules.m3_model.rules import cycle_path,validate_catalog,match
 from app.errors import DomainError
 def test_zones(clean):assert run(clean)["zones"]==["A","B","C"]
 def test_bad_direction(dirty): # TRAP-21
-    assert "REFERENCE" in [x["code"] for x in run(dirty)["quarantine"]]
+    assert "DIRECTION" in [x["code"] for x in run(dirty)["quarantine"]]
 def test_valid_count(dirty):assert len(run(dirty)["rows"])==54
 def test_catalog(clean):assert run(clean)["catalog"]["AB"]==["A","B","transfer"]
 def test_cycle(): # TRAP-20
